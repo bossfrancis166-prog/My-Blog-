@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="categories-section">
+    <h2 class="section-title">Categories</h2>
+    <p class="categories-intro">Browse stories by topic — find what speaks to you.</p>
+
+    <div class="categories-grid">
+        <a href="/categories?cat=Food" class="category-card">
+            <div class="category-icon">🍕</div>
+            <h3>Food</h3>
+            <p>Recipes, restaurants and everything delicious.</p>
+        </a>
+        <a href="/categories?cat=Craft" class="category-card">
+            <div class="category-icon">🎨</div>
+            <h3>Craft</h3>
+            <p>DIY, handmade and creative projects.</p>
+        </a>
+        <a href="/categories?cat=Music" class="category-card">
+            <div class="category-icon">🎵</div>
+            <h3>Music</h3>
+            <p>Sounds, artists and stories behind the songs.</p>
+        </a>
+        <a href="/categories?cat=Life" class="category-card">
+            <div class="category-icon">🌿</div>
+            <h3>Life</h3>
+            <p>Personal reflections and everyday moments.</p>
+        </a>
+        <a href="/categories?cat=Culture" class="category-card">
+            <div class="category-icon">🎭</div>
+            <h3>Culture</h3>
+            <p>Art, people and the things that make us who we are.</p>
+        </a>
+        <a href="/categories?cat=Travel" class="category-card">
+            <div class="category-icon">✈️</div>
+            <h3>Travel</h3>
+            <p>Places visited and roads taken.</p>
+        </a>
+        <a href="/categories?cat=Opinion" class="category-card">
+            <div class="category-icon">💭</div>
+            <h3>Opinion</h3>
+            <p>Honest takes on the world around us.</p>
+        </a>
+        <a href="/categories?cat=Books" class="category-card">
+            <div class="category-icon">📚</div>
+            <h3>Books</h3>
+            <p>Reviews, recommendations and reading lists.</p>
+        </a>
+        <a href="/categories?cat=Beauty & Style" class="category-card">
+            <div class="category-icon">💄</div>
+            <h3>Beauty & Style</h3>
+            <p>Fashion, beauty tips and personal style.</p>
+        </a>
+        <a href="/categories?cat=Wellness" class="category-card">
+            <div class="category-icon">💪</div>
+            <h3>Wellness</h3>
+            <p>Health, mindset and living your best life.</p>
+        </a>
+    </div>
+
+    {% if selected %}
+    <div class="filtered-posts">
+        <h3 class="section-title" style="margin-top: 50px;">
+            Posts in — {{ selected }}
+        </h3>
+        {% if posts %}
+            {% for post in posts %}
+            <article class="post-card">
+                <span class="post-category">{{ post.category }}</span>
+                <h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
+                <p class="post-meta">{{ post.date }}</p>
+                <p class="post-excerpt">{{ post.content | striptags | truncate(150) }}</p>
+                <a href="/post/{{ post.slug }}" class="read-more">Read more →</a>
+            </article>
+            {% endfor %}
+        {% else %}
+            <div class="no-posts">
+                <p>No posts in this category yet. <a href="/admin">Write one →</a></p>
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</section>
+
+{% endblock %}

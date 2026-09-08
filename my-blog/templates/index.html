@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="posts-section">
+    <h2 class="section-title">Latest Posts</h2>
+
+    {% if posts %}
+        {% for post in posts %}
+        <article class="post-card">
+            <span class="post-category">{{ post.category }}</span>
+            <h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
+            <p class="post-meta">{{ post.date }}</p>
+            <p class="post-excerpt">{{ post.content | striptags | truncate(150) }}</p>
+            <a href="/post/{{ post.slug }}" class="read-more">Read more →</a>
+        </article>
+        {% endfor %}
+    {% else %}
+        <div class="no-posts">
+            <p>No posts yet. <a href="/admin">Write your first post →</a></p>
+        </div>
+    {% endif %}
+
+</section>
+
+{% endblock %}

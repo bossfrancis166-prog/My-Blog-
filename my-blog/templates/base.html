@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Out Loud On Paper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo-wrapper">
+                    <a href="/" class="logo-link">
+                        <div class="logo-icon">OL</div>
+                        <div class="logo-text">
+                            <span class="logo-main">Out Loud On Paper</span>
+                            <span class="logo-sub">Stories worth reading</span>
+                        </div>
+                    </a>
+                </div>
+                <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav id="main-nav">
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/categories">Categories</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/admin" class="nav-admin">✍️ Write</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>About</h3>
+                <p>Welcome to Out Loud On Paper — a space for thoughts, stories and ideas worth sharing.</p>
+                <a href="/about" class="read-more">Learn more →</a>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="/categories?cat=Food">🍕 Food</a></li>
+                    <li><a href="/categories?cat=Craft">🎨 Craft</a></li>
+                    <li><a href="/categories?cat=Music">🎵 Music</a></li>
+                    <li><a href="/categories?cat=Life">🌿 Life</a></li>
+                    <li><a href="/categories?cat=Culture">🎭 Culture</a></li>
+                    <li><a href="/categories?cat=Travel">✈️ Travel</a></li>
+                    <li><a href="/categories?cat=Opinion">💭 Opinion</a></li>
+                    <li><a href="/categories?cat=Books">📚 Books</a></li>
+                    <li><a href="/categories?cat=Beauty & Style">💄 Beauty & Style</a></li>
+                    <li><a href="/categories?cat=Wellness">💪 Wellness</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Stay Connected</h3>
+                <a href="/contact" class="contact-btn">Get in Touch</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Out Loud On Paper. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('main-nav');
+            var hamburger = document.getElementById('hamburger');
+            nav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>

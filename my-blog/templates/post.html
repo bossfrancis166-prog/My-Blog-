@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article class="single-post">
+    <header class="post-header">
+        <span class="post-category">{{ post.category }}</span>
+        <h2 class="post-title">{{ post.title }}</h2>
+        <p class="post-meta">{{ post.date }} · Out Loud On Paper</p>
+        <div class="post-divider"></div>
+    </header>
+
+    {% if post.cover_image %}
+    <img src="{{ post.cover_image }}" alt="{{ post.title }}" class="post-cover" onerror="this.style.display='none'">
+    {% endif %}
+
+    <div class="post-body">
+        {{ post.content | safe }}
+    </div>
+
+    <footer class="post-footer">
+        <div class="post-divider"></div>
+        <div class="post-footer-links">
+            <a href="/" class="read-more">← Back to all posts</a>
+            <a href="/categories?cat={{ post.category }}" class="read-more">More in {{ post.category }} →</a>
+        </div>
+    </footer>
+</article>
+
+{% endblock %}
